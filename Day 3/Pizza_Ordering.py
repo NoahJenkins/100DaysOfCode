@@ -22,4 +22,4 @@ if extra_cheese == Y:
   sub_price += 1
 
 
-print(sub+price)
+print(f"Your total is ${sub_price}.")
