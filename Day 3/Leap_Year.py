@@ -12,5 +12,15 @@
 #2100 ÷ 100 = 21 (Not Leap)
 #2100 ÷ 400 = 5.25 (Not Leap)
 
-
 year = int(input("Which year do you want to check? "))
+
+if year % 4 == 0:
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print("A leap year.")
+        else:
+            print("Not a leap year.")
+    else:
+        print("A leap year.")
+else:
+    print("Not a leap year.")
