@@ -8,9 +8,6 @@ lover2 = name2.lower()
 
 couple = lover1 + lover2
 
-print(couple)
-
-
 t_count = int(couple.count('t')) 
 r_count = int(couple.count('r')) 
 u_count = int(couple.count('u')) 
