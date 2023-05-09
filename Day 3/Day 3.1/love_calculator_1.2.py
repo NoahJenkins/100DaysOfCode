@@ -1,6 +1,10 @@
+# 🚨 Don't change the code below 👇
 print("Welcome to the Love Calculator!")
 name1 = input("What is your name? \n")
 name2 = input("What is their name? \n")
+# 🚨 Don't change the code above 👆
+
+#Write your code below this line 👇
 
 
 lover1 = name1.lower()
@@ -25,13 +29,11 @@ ee_count = int(couple.count('e'))
 
 LOVE = l_count + o_count + v_count + ee_count
 
-love_score = str(TRUE) + str(LOVE)
-
-score = int(love_score)
+score = TRUE + LOVE
 
 if score < 10 or score > 90:
     print(f"Your score is {score}%, you go together like coke and mentos.")
 elif score > 40 and score < 50:
-    print(f"Your score is {score}%, you go are alright together/")
+    print(f"Your score is {score}%, you go are alright together.")
 else:
     print(f'Your score is {score}.')
