@@ -31,29 +31,30 @@ import random
 number = input("What do you choose? Type 0 for Rock, 1 for Paper, and 2 for Scissors? ")
 print('You chose:')
 player = int(number)
-print(game_images[player])
-
-
-#0 = rock, 1 = Paper, 2 = scissorsizzor
-
-player = int(number)
-
-NPC = random.randint(0,2)
-print("Computer Chose:")
-print(game_images[NPC])
-
-
-win = "Congrats, you win!"
-loss = "Sorry, you lose."
-if player == NPC:
-  print("Amazing, it's a Draw! What are the odds?")
-elif player == 0 and NPC == 2:
-  print(win)
-elif NPC == 0 and player ==2:
-  print(loss)
-elif player > NPC:
-  print(win)
-elif NPC > player:
-  print(loss)
-else:
+if player >= 3 or player < 0:
   print("Sorry, that is an invalid choice. You loose")
+else:
+  print(game_images[player])
+  
+  #0 = rock, 1 = Paper, 2 = scissorsizzor
+  
+  player = int(number)
+  
+  NPC = random.randint(0,2)
+  print("Computer Chose:")
+  print(game_images[NPC])
+  
+  
+  win = "Congrats, you win!"
+  loss = "Sorry, you lose."
+  if player == NPC:
+    print("Amazing, it's a Draw! What are the odds?")
+  elif player == 0 and NPC == 2:
+    print(win)
+  elif NPC == 0 and player ==2:
+    print(loss)
+  elif player > NPC:
+    print(win)
+  elif NPC > player:
+    print(loss)
+  
