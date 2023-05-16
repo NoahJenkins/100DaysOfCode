@@ -18,7 +18,7 @@ elif size == "S":
   if add_pepperoni == "Y":
     sub_price += 2
 
-if extra_cheese == Y:
+if extra_cheese == "Y":
   sub_price += 1
 
 
