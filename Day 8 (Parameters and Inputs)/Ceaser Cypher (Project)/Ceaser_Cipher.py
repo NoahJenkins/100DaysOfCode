@@ -14,6 +14,6 @@ def ceaser(cipher_text, shift_amount):
     elif direction == "decode":
       new_position = position - shift_amount
     message += alphabet[new_position]
-  print(f"The message is: '{message}'")
+  print(f"The message {direction}d is: '{message}'")
 
 ceaser(cipher_text=text, shift_amount=shift)
