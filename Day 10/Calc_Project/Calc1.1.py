@@ -31,12 +31,12 @@ def calculator():
   for key in operations.keys():
       print(key)
   
-  num1 = int(input("What's the first number?: "))
+  num1 = float(input("What's the first number?: "))
   
   thinking = True
   
   while thinking == True:
-    num2 = int(input("What's the second number?: "))
+    num2 = float(input("What's the second number?: "))
     operation_symbol = input("Pick an operation: ")
   
     if operation_symbol in operations:
@@ -52,6 +52,8 @@ def calculator():
     else:
         thinking = False
         calculator()
+# recursion
+#Recursion is when a function calls itself.
 
 
 calculator()
