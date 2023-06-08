@@ -24,17 +24,17 @@ def compare(user_score, npc_score):
     if user_score == npc_score:
         return "Draw"
     elif npc_score == 0:
-        return "Lose, opponent has Blackjack"
+        return "You lose, the opponent has Blackjack."
     elif user_score == 0:
-        return "Win with a Blackjack"
+        return "You Win with a Blackjack!"
     elif user_score > 21:
-        return "You went over. You lose"
+        return "You went over. You lose."
     elif npc_score > 21:
-        return "Opponent went over. You win"
+        return "The Opponent went over. You win!"
     elif user_score > npc_score:
-        return "You win"
+        return "You win!"
     else:
-        return "You lose"
+        return "You lose!"
     
 def play_game():
     user_hand.append(deal_card())
