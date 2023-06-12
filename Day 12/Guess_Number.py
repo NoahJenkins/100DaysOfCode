@@ -1,7 +1,5 @@
-from art import logo
-import random
-print(art.logo)
 
+import random
 
 Diffuculty = input("Choose a difficulty. Type 'easy' or 'hard': ")
 if Diffuculty == 'easy':
@@ -44,3 +42,4 @@ while guess != number:
         break
     elif guess != number:
         print("Guess again.")
+
