@@ -5,7 +5,7 @@ print(art.logo)
 
 
 
-game_runnint = True
+game_running = True
 
 while game_running == True:
 
