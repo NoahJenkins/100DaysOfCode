@@ -1,7 +1,7 @@
 
 import random
-import art_guessing
-print(art_guessing.logo)
+import art
+print(art.logo)
 
 
 
