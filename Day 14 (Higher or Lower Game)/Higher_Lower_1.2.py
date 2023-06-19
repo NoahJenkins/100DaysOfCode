@@ -12,12 +12,16 @@ def clear():
         os.system('clear')
 
 def turn_start(selected_subject_A, selected_subject_B):
+    print(logo)
     choice_A = selected_subject_A['follower_count']
     print(f"Compare A: {selected_subject_A['name']}, a {selected_subject_A['description']} from {selected_subject_A['country']} with {choice_A} followers.")
     print(vs)
     choice_B = selected_subject_B['follower_count']
     print(f"Compare B: {selected_subject_B['name']}, a {selected_subject_B['description']} from {selected_subject_B['country']} with {choice_B} followers.")
-    return choice_A, choice_B
+    if choice_A == choice_B:
+        turn_start()
+    else:    
+        return choice_A, choice_B
 
 def run_game():
     score = 0
