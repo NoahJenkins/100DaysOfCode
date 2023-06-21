@@ -9,6 +9,7 @@ MENU = {
     "espresso": {
         "ingredients": {
             "water": 50,
+            "milk": 0,
             "coffee": 18,
         },
         "cost": 1.5,
@@ -37,7 +38,7 @@ resources = {
     "coffee": 100,
 }
 
-coins = 0  # Initialize coins variable with 0
+coins = {"quarters": 0.25, "dimes": 0.10, "nickels": 0.05, "pennies": 0.01}
 
 def check_resources(user_choice):
     if resources["water"] < MENU[user_choice]["ingredients"]["water"]:
@@ -61,9 +62,30 @@ def process_coins():
     total_coins = (quarters * coins["quarters"]) + (dimes * coins["dimes"]) + (nickels * coins["nickels"]) + (pennies * coins["pennies"])
     return total_coins
 
+def check_transaction(user_choice, total_coins):
+    if total_coins < MENU[user_choice]["cost"]:
+        print("Sorry, that's not enough money. Pyament refunded.")
+        return False
+    elif total_coins > MENU[user_choice]["cost"]:
+        change = round(total_coins - MENU[user_choice]["cost"], 2)
+        print(f"Here is ${change} in change.")
+        global coins
+        coins["quarters"] = 0.25
+        coins["dimes"] = 0.10
+        coins["nickels"] = 0.05
+        coins["pennies"] = 0.01
+        return True
+    
+
+def make_coffee(user_choice):
+    resources["water"] -= MENU[user_choice]["ingredients"]["water"]
+    resources["milk"] -= MENU[user_choice]["ingredients"]["milk"]
+    resources["coffee"] -= MENU[user_choice]["ingredients"]["coffee"]
+    print(f"Here is your {user_choice}. Enjoy!")
+
 cafe_on = True
 while cafe_on:
-    user_choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    user_choice = input("What would you like? ($1.50 espresso/ $2.50 latte/ $3.00 cappuccino): ").lower()
     if user_choice == "off":
         cafe_on = False
     elif user_choice == "report":
@@ -71,21 +93,15 @@ while cafe_on:
         print(f"Milk: {resources['milk']}ml")
         print(f"Coffee: {resources['coffee']}g")
         print(f"Money: ${coins}")
-    elif user_choice in ["espresso", "latte", "cappuccino"]:
+    elif user_choice == "espresso" or user_choice == "latte" or user_choice == "cappuccino":
         if check_resources(user_choice):
             total_coins = process_coins()
-            if total_coins < MENU[user_choice]["cost"]:
-                print("Sorry, that's not enough money. Money refunded.")
-            else:
-                change = total_coins - MENU[user_choice]["cost"]
-                print(f"Here is ${change:.2f} in change.")
-                print(f"Here is your {user_choice} ☕️. Enjoy!")
-                resources["water"] -= MENU[user_choice]["ingredients"]["water"]
-                resources["milk"] -= MENU[user_choice]["ingredients"]["milk"]
-                resources["coffee"] -= MENU[user_choice]["ingredients"]["coffee"]
-                coins += MENU[user_choice]["cost"]
-    else:
-        print("Invalid input. Please try again.")
+            if check_transaction(user_choice, total_coins):
+                make_coffee(user_choice)
+    else: 
+        print("Please enter a valid option.")
+
+
 
 
 
