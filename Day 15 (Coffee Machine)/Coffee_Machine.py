@@ -69,11 +69,8 @@ def check_transaction(user_choice, total_coins):
     elif total_coins > MENU[user_choice]["cost"]:
         change = round(total_coins - MENU[user_choice]["cost"], 2)
         print(f"Here is ${change} in change.")
-        global coins
-        coins["quarters"] = 0.25
-        coins["dimes"] = 0.10
-        coins["nickels"] = 0.05
-        coins["pennies"] = 0.01
+        return True
+    else :
         return True
     
 
