@@ -29,14 +29,16 @@ while not end_of_game:
 
 
     #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
-    if guess in display:
-        print(f'Sorry, you already guessed {guess}, try again.')
+    
     #Check guessed letter
     for position in range(word_length):
         letter = chosen_word[position]
         print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
         if letter == guess:
             display[position] = letter
+
+    if guess in display:
+        print(f'Sorry, you already guessed {guess}, try again.')
 
     #Check if user is wrong.
     if guess not in chosen_word:
@@ -45,7 +47,7 @@ while not end_of_game:
         print(f'You guessed {guess}, which is not in the word. You lose a life.')
         if lives == 0:
             end_of_game = True
-            print("You lose.")
+            print(f"You lose. The answer was {chosen_word}.")
 
     #Join all the elements in the list and turn it into a String.
     print(f"{' '.join(display)}")
