@@ -17,10 +17,8 @@ def caesar(start_text, shift_amount, cipher_direction):
       end_text += char
     
   print(f"Here's the {cipher_direction}d result: {end_text}")
-  go_again = input('Do you want to play again? "yes" or "no". ').lower
-  if go_again == 'no':
-    spying == False
-
+  
+  
 
 
 #TODO-1: Import and print the logo from art.py when the program starts.
@@ -33,16 +31,19 @@ print(logo)
 #e.g. Type 'yes' if you want to go again. Otherwise type 'no'.
 #If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
 #Hint: Try creating a while loop that continues to execute the program if the user types 'yes'. 
-
 spying = True
+while spying == True:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+    #TODO-2: What if the user enters a shift that is greater than the number of letters in the alphabet?
+    #Try running the program and entering a shift number of 45.
+    #Add some code so that the program continues to work even if the user enters a shift number greater than 26. 
+    #Hint: Think about how you can use the modulus (%).
 
-#TODO-2: What if the user enters a shift that is greater than the number of letters in the alphabet?
-#Try running the program and entering a shift number of 45.
-#Add some code so that the program continues to work even if the user enters a shift number greater than 26. 
-#Hint: Think about how you can use the modulus (%).
-
-caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+    go_again = input('Do you want to play again? "yes" or "no". ').lower()  # Corrected input function
+    if go_again == 'no':
+        spying = False  # Update the spying variable
+        print('Good Bye!')
