@@ -8,10 +8,21 @@
 #     print('My name is Noah')
 #     print('What is your name?')
 
+# def greet(name):
+#     print(f'Hello {name}')
 
+# greet('Noah')
 
-def greet(name):
+#Positional Arguments
+# def greet(name, location):
+#     print(f'Hello {name}')
+#     print(f'Welcome to {location}')
+
+# greet('Noah', 'Texas')
+
+#Keyword Arguments
+def my_function(name, location):
     print(f'Hello {name}')
+    print(f'Welcome to {location}')
 
-greet('Noah')
-
+my_function(name='Noah', location = 'Texas')
