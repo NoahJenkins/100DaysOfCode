@@ -36,8 +36,8 @@ def calculator():
   thinking = True
   
   while thinking == True:
-    num2 = float(input("What's the second number?: "))
     operation_symbol = input("Pick an operation: ")
+    num2 = float(input("What's the second number?: "))
   
     if operation_symbol in operations:
         operation_func = operations[operation_symbol]
