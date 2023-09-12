@@ -78,13 +78,3 @@ if play_again == 'yes':
             game_running = False
 else:
     print('Thanks for playing!')
-
-
-
-
-
-
-
-
-    
-    
