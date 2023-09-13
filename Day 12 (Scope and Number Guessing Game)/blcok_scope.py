@@ -7,5 +7,4 @@ if game_level < 5:
 
 print(new_enemy)
 
-# if else, and lopps (for/while) statements do not put a fence around a variable, 
-# and it can be called in what ever namescape (by default global) it is in. 
+# 

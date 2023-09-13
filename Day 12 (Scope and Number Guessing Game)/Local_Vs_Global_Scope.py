@@ -59,3 +59,10 @@ def increase_enemies():
 enemies = increase_enemies()
 print(f"enemies outside function: {enemies}")
 
+#Global COnstants:
+
+PI = 3.114159
+#The naming convention for a Global cosntnce is to you all caps, this does not affect the code,
+#but is common practice. 
+
+
