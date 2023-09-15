@@ -15,12 +15,7 @@ from game_data import data
 #Correct answer now becomea A
 #If user is wrong, game ends. 
 
-# first_entry = data[0]
-# name = first_entry['name']
-# follower_count = first_entry['follower_count']
-# description = first_entry['description']
-# country = first_entry['country']
-
+print(logo)
 
 def grab_data():
     random_subject = random.choice(data)
@@ -32,6 +27,39 @@ def grab_data():
 
 subject_A = grab_data()
 subject_B = grab_data()
-print(subject_A)
-print(subject_B)
+subject_A_Value = subject_A[1]
+subject_B_Value = subject_B[1]
+
+if subject_A[0] == subject_B [0]:
+    subject_B = grab_data()
+# print(f'{subject_B[0]}')
+
+subject_A_Value = subject_A[1]
+subject_B_Value = subject_B[1]
+
+print(f'Compare A: {subject_A[0]}, a {subject_A[2]}, from {subject_A[3]}')
+print(subject_A_Value)
+
+print(vs)
+
+print(f'Compare B: {subject_B[0]}, a {subject_B[2]}, from {subject_B[3]}')
+print(subject_B_Value)
+
+def compare(subject_A, subject_B):
+    
+    if subject_A > subject_B:
+        answer = subject_A
+    else:
+        answer = subject_B
+    question = input('Who do you think has a higher follower count? A or B: ').lower
+    if answer == question:
+        return 1
+    else:
+        return 0
+
+score = 0
+
+score += int(compare(subject_A, subject_B))
+print(score)
+
 
