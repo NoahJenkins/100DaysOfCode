@@ -24,6 +24,8 @@ def grab_data():
 
 subject_A = grab_data()
 subject_B = grab_data()
+if subject_A[0] == subject_B[0]:
+            subject_B = grab_data()
 
 score = 0
 
