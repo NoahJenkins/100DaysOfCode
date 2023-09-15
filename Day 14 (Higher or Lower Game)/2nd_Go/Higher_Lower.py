@@ -3,18 +3,6 @@ from art import logo
 from art import vs
 from game_data import data
 
-#break down problems
-
-#print logo
-#The following code would need to be in a while loop. 
-#print random data as compare A
-#Print VS
-#Print random data as compare B
-#Ask user to choose a or b
-#IF user is correct, add 1 life. 
-#Correct answer now becomea A
-#If user is wrong, game ends. 
-
 print(logo)
 
 def grab_data():
