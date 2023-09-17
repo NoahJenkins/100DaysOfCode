@@ -115,6 +115,7 @@ def check_transaction(drink, total_coins):
         print(f"Here is ${change} in change.")
         return True
     else :
+        print('That is the perfect ammount, thank you!')
         return True
 
 
