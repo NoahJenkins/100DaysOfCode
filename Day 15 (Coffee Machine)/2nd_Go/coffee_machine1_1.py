@@ -1,5 +1,6 @@
 from Coffee_Data import resources
 from Coffee_Data import MENU
+import os
 
 
 #Create a function to check current recourses
@@ -7,10 +8,17 @@ from Coffee_Data import MENU
 # *****GLOBAL VARIABLES*****
 user_choice = ""
 drink = ''
-cafe_running = True
 
 # *****FUNCTIONS/METHODS*****
 
+def clear():
+    """This function will cleae the terminal. Please note that you must 'import os' for this to work."""
+    # Clear the terminal screen for Windows
+    if os.name == 'nt':
+        os.system('cls')
+    # Clear the terminal screen for Unix/Linux/MacOS
+    else:
+        os.system('clear')
 
 def report():
     for key, value in resources.items():
@@ -18,7 +26,7 @@ def report():
 
 
 def show_menu():
-    return input("What would you like? (espresso ($1.50) /latte ($2.50) /cappuccino ($3.0)): ").lower()
+    return str(input("What would you like? (espresso ($1.50) /latte ($2.50) /cappuccino ($3.0)): ")).lower()
     
 
 def drink_selection(user_choice):
@@ -36,8 +44,7 @@ def drink_selection(user_choice):
         drink = MENU["cappuccino"]
         return drink
     elif user_choice == 'off':
-        cafe_running = False
-        return
+        return 'off'
     else:
         print("I'm sorry, that is not a valid selection, please try again: ")
         user_choice = show_menu()
@@ -79,21 +86,41 @@ def check_transaction(drink, total_coins):
         print('That is the perfect ammount, thank you!')
         return True
 
-def barista():
-    new_water =
-    new_milk =
-    new_coffee =
+def barista(drink, user_choice):
+    new_water = (resources["water"] - drink["ingredients"]['water'])
+    new_milk = (resources["milk"] - drink["ingredients"]['milk'])
+    new_coffee = (resources["coffee"] - drink["ingredients"]['coffee'])
+    print(f'Here is your {user_choice}, please enjoy!')
+    return {
+    "water": new_water,
+    "milk": new_milk,
+    "coffee": new_coffee,
+}
 
-# print(coins)
-user_choice = show_menu()
-# print(user_choice)
-drink = drink_selection(user_choice)
-# print(drink)
-print(drink["cost"])
-check_resources(drink)
-total_coins = process_coins()
-payment = check_transaction(drink, total_coins)
-#make drink function
+# # print(coins)
+# user_choice = show_menu()
+# # print(user_choice)
+# drink = drink_selection(user_choice)
+# # print(drink)
+# print(drink["cost"])
+# check_resources(drink)
+# total_coins = process_coins()
+# payment = check_transaction(drink, total_coins)
+# resources = barista(drink, user_choice)
+# # print(resources)
 
 
+cafe_on = True
+while cafe_on:
+    user_choice = show_menu()
+    if user_choice == 'off':
+        cafe_on = False
+    else:
+        drink = drink_selection(user_choice)
+        print(drink["cost"])
+        check_resources(drink)
+        total_coins = process_coins()
+        payment = check_transaction(drink, total_coins)
+        resources = barista(drink, user_choice)
 
+clear()
