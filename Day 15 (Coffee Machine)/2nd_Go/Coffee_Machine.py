@@ -66,7 +66,6 @@ def process_coins():
     dimes = float(input("How many dimes?: "))
     nickels = float(input("How many nickels?: "))
     pennies = float(input("How many pennies?: "))
-    # return (quarters * coins["quarters"]) + (dimes * coins["dimes"]) + (nickels * coins["nickels"]) + (pennies * coins["pennies"])
     return (quarters * .25) + (dimes * .10) + (nickels * .05) + (pennies * .01)
        
 def check_transaction(drink, total_coins):

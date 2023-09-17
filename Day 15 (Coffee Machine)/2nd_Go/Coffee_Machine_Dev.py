@@ -21,15 +21,20 @@ def clear():
         os.system('clear')
 
 def report():
+    """This function will show to current resources in the coffee machine."""
     for key, value in resources.items():
         print(f"{key}: {value}")
 
 
 def show_menu():
+    """This function will ask the user to deside their drink selection, it can also be used
+    to turn off the machine or pull a report with the secret inputs"""
     return str(input("What would you like? (espresso ($1.50) /latte ($2.50) /cappuccino ($3.0)): ")).lower()
     
 
 def drink_selection(user_choice):
+    """This function will take the user choice, and assign the recourse required to make it and 
+    the cost to purchase it. It will also pass along the user secred code for the secret functions"""
     if user_choice == "report":
         return 'report'
     elif user_choice == 'espresso':
@@ -49,6 +54,8 @@ def drink_selection(user_choice):
         return drink_selection(user_choice)
     
 def check_resources(drink):
+    """This function will check if there are enouch recourses in the machine to
+    make the selected drink."""
     if resources["water"] < drink["ingredients"]['water']:
         print("Sorry, there is not enough water.")
         return False
@@ -62,6 +69,7 @@ def check_resources(drink):
         return True
     
 def process_coins():
+    """This function will will take the users payment, and calculate it's total value."""
     print("Please insert coins.")
     quarters = float(input("How many quarters?: "))
     dimes = float(input("How many dimes?: "))
@@ -73,6 +81,9 @@ def process_coins():
 
         
 def check_transaction(drink, total_coins):
+    """This function will will take the users payment, and calculate if it is enouch
+    to purchase their selected drink. It will return the change if it is not enouch,
+    and will return the correct change if they overpayed."""
     if total_coins < drink["cost"]:
         print("Sorry, that's not enough money. Pyament refunded.")
         return False
@@ -85,7 +96,10 @@ def check_transaction(drink, total_coins):
         return True
 
 def barista(drink, user_choice):
-    
+    """This function will will efffectively make the users drink, it will take
+    the current amount of recourses and subtract the required ammount to make
+    the users selected drink, then update the recourses dictionary to the new vaule
+    after the drink has been made."""
     new_water = (resources["water"] - drink["ingredients"]['water'])
     new_milk = (resources["milk"] - drink["ingredients"]['milk'])
     new_coffee = (resources["coffee"] - drink["ingredients"]['coffee'])
