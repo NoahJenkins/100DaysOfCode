@@ -31,9 +31,7 @@ def show_menu():
 
 def drink_selection(user_choice):
     if user_choice == "report":
-        report()
-        user_choice = show_menu()
-        return drink_selection(user_choice)
+        return 'report'
     elif user_choice == 'espresso':
         drink =  MENU["espresso"]
         return drink
@@ -87,6 +85,7 @@ def check_transaction(drink, total_coins):
         return True
 
 def barista(drink, user_choice):
+    
     new_water = (resources["water"] - drink["ingredients"]['water'])
     new_milk = (resources["milk"] - drink["ingredients"]['milk'])
     new_coffee = (resources["coffee"] - drink["ingredients"]['coffee'])
@@ -97,6 +96,7 @@ def barista(drink, user_choice):
     "coffee": new_coffee,
 }
 
+#This is a dry run, used to test the workflow and make sure the inputs and outputs are working properly.
 # # print(coins)
 # user_choice = show_menu()
 # # print(user_choice)
@@ -115,6 +115,8 @@ while cafe_on:
     user_choice = show_menu()
     if user_choice == 'off':
         cafe_on = False
+    elif user_choice == 'report':
+        report()
     else:
         drink = drink_selection(user_choice)
         print(drink["cost"])
