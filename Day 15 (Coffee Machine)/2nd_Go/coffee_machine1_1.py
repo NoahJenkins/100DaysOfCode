@@ -1,46 +1,7 @@
-from Coffee_Data import coins
 from Coffee_Data import resources
 from Coffee_Data import MENU
 
-# coins = {
-#     "quarters": 0.25,
-#     "dimes": 0.10,
-#     "nickles": 0.05,
-#     "pennies": 0.01,
-# }
 
-# resources = {
-#     "water": 300,
-#     "milk": 200,
-#     "coffee": 100,
-# }
-
-
-# MENU = {
-#     "espresso": {
-#         "ingredients": {
-#             "water": 50,
-#             "coffee": 18,
-#         },
-#         "cost": 1.5,
-#     },
-#     "latte": {
-#         "ingredients": {
-#             "water": 200,
-#             "milk": 150,
-#             "coffee": 24,
-#         },
-#         "cost": 2.5,
-#     },
-#     "cappuccino": {
-#         "ingredients": {
-#             "water": 250,
-#             "milk": 100,
-#             "coffee": 24,
-#         },
-#         "cost": 3.0,
-#     }
-# }
 #Create a function to check current recourses
 
 # *****GLOBAL VARIABLES*****
@@ -118,6 +79,10 @@ def check_transaction(drink, total_coins):
         print('That is the perfect ammount, thank you!')
         return True
 
+def barista():
+    new_water =
+    new_milk =
+    new_coffee =
 
 # print(coins)
 user_choice = show_menu()
