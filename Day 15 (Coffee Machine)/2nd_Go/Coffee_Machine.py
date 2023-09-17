@@ -47,30 +47,55 @@ from Coffee_Data import MENU
 user_choice = ""
 drink = ''
 
-def check_resources():
+def report():
     for key, value in resources.items():
         print(f"{key}: {value}")
 
 
-def show_menue():
-    user_choice = input("What would you like? (espresso ($1.50) /latte ($2.50) /cappuccino ($3.0)): ").lower()
-    return user_choice
+def show_menu():
+    return input("What would you like? (espresso ($1.50) /latte ($2.50) /cappuccino ($3.0)): ").lower()
+    
 
-def report():
+def drink_selection(user_choice):
     if user_choice == "report":
-        check_resources()
-    elif user_choice == 'expresso':
-        drink =  MENU["expresso"]
+        report()
+        user_choice = show_menu()
+        return drink_selection(user_choice)
+    elif user_choice == 'espresso':
+        drink =  MENU["espresso"]
         return drink
     elif user_choice == 'latte':
-        drink == MENU["latte"]
+        drink = MENU["latte"]
         return drink
-    elif user_choice == 'cappaccino':
-        drink == MENU["cappuccino"]
+    elif user_choice == 'cappuccino':
+        drink = MENU["cappuccino"]
+        return drink
     else:
-        print("I'm sorry, that is not a valid selection, please try again: /n")
-        show_menue()
-        report()
+        print("I'm sorry, that is not a valid selection, please try again: ")
+        user_choice = show_menu()
+        return drink_selection(user_choice)
+        
 
-report()
+user_choice = show_menu()
+print(user_choice)
+drink = drink_selection(user_choice)
 print(drink)
+
+# espresso_ingredients = MENU["espresso"]["ingredients"]
+
+# print(drink["ingredients"]['water'])
+
+def check_resource(drink, user_choice):
+    required_water = drink["ingredients"]['water']
+    required_coffee = drink["ingredients"]['coffee']
+    required_milk = drink["ingredients"]['milk']
+
+    if required_water < resources['water'] or required_coffee < resources['coffee'] or required_milk < resources('milk'):
+        print(f"I'm sorry, we do not have enouch ingredients for {user_choice}, please try a different selection.")
+        return
+    else:
+        print(f'Awesome choice! The {user_choice} cost {drink["cost"]}')
+        return drink["cost"]
+
+cost_drink = check_resource(drink, user_choice)
+print(check_resource)
