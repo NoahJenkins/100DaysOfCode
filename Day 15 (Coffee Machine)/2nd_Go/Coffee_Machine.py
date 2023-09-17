@@ -109,7 +109,6 @@ while cafe_on:
         report()
     else:
         drink = drink_selection(user_choice)
-        print(drink["cost"])
         check_resources(drink)
         total_coins = process_coins()
         payment = check_transaction(drink, total_coins)
