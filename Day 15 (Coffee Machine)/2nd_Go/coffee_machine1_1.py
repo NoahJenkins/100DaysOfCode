@@ -119,25 +119,16 @@ def check_transaction(drink, total_coins):
         return True
 
 
-print(coins)
+# print(coins)
 user_choice = show_menu()
-print(user_choice)
+# print(user_choice)
 drink = drink_selection(user_choice)
-print(drink)
+# print(drink)
 print(drink["cost"])
 check_resources(drink)
 total_coins = process_coins()
 payment = check_transaction(drink, total_coins)
-#make drink
+#make drink function
 
 
 
-
-# while cafe_running:
-#     user_choice = show_menu()
-# print(user_choice)
-# drink = drink_selection(user_choice)
-# print(drink)
-# if drink["ingredients"]['water'] < resources['water'] or drink["ingredients"]['coffee'] < resources['coffee'] or drink["ingredients"]['milk'] < resources('milk'):
-#     print(f"I'm sorry, we do not have enouch ingredients for {user_choice}, please try a different selection.")
-    
