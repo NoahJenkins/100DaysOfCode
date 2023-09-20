@@ -28,8 +28,9 @@ def painting():
     tim.forward(300)
     tim.setheading(0)
     tim.pendown
+    tim.hideturtle()
 
-    for dot_count in range(1, dots):
+    for dot_count in range(1, dots +1):
         tim.dot(20, random.choice(color_list))
         tim.penup()
         tim.forward(50)
@@ -40,7 +41,7 @@ def painting():
             tim.setheading(180)
             tim.forward(500)
             tim.setheading(0)
-    tim.dot(20, random.choice(color_list))
+    
 
 painting()
 
