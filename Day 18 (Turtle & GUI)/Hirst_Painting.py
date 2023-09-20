@@ -1,7 +1,7 @@
 import colorgram
 
 # Extract 6 colors from an image.
-colors = colorgram.extract('painting.avif', 6)
+colors = colorgram.extract('painting.jpeg', 6)
 # RGB, HSL, and what proportion of the image was that color.
 first_color = colors[0]
 rgb = first_color.rgb # e.g. (255, 151, 210)
