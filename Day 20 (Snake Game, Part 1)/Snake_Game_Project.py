@@ -1,19 +1,28 @@
 from turtle import Turtle, Screen
 import random
-
-
-#Snake body Set Up
-starting_positions =[(0,0), (-20,0), (-40, 0)]
-
-for position in starting_positions:
-    new_segment = Turtle('square')
-    new_segment.color('white')
-    new_segment.goto (position)
-
+import time
+from snake import Snake
 
 #Screen Set Up
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor('black')
 screen.title("Noah's Snake Game")
+screen.tracer(0)
+
+snake = Snake()
+snake.create_snake()
+
+
+
+game_is_on = True
+while game_is_on:
+    screen.update()
+    time.sleep(.1)
+    snake.move()
+
+
+        
+
+
 screen.exitonclick()
