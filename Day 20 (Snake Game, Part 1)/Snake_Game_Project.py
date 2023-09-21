@@ -10,14 +10,15 @@ screen.bgcolor('black')
 screen.title("Noah's Snake Game")
 screen.tracer(0)
 
+#Setting up Snake object from class.
 snake = Snake()
 snake.create_snake()
 
 screen.listen()
-screen.onkey(snake.up,'up')
-screen.onkey(snake.down,'down')
-screen.onkey(snake.left,'left')
-screen.onkey(snake.right, 'right')
+screen.onkey(snake.up,'Up')
+screen.onkey(snake.down,'Down')
+screen.onkey(snake.left,'Left')
+screen.onkey(snake.right, 'Right')
 
 
 
@@ -30,5 +31,3 @@ while game_is_on:
 
         
 
-
-screen.exitonclick()
