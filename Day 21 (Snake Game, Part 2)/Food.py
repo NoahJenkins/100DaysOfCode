@@ -13,10 +13,20 @@ class Food(Turtle):
         random_x =random.randint(-280,280)
         random_y =random.randint(-280,280)
         self.goto(random_x, random_y)
+    
+    def refresh(self):
+        """Moves the location of the food object when called, in the came, this is when the snake head collides
+        with the the food object. """
+        random_x =random.randint(-280,280)
+        random_y =random.randint(-280,280)
+        self.goto(random_x, random_y)
 
-food = Food()
-screen = Screen()
-screen.exitonclick()
+
+
+#Un comment for testing. 
+# food = Food()
+# screen = Screen()
+# screen.exitonclick()
 
 
         
