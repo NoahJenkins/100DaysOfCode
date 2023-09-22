@@ -4,6 +4,7 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
+        self.color('white')
         score_text = f'Score: {self.score}'
         self.write(score_text, align="center", font=("Arial", 24, "normal",))
         self.penup()
@@ -14,13 +15,13 @@ class Scoreboard(Turtle):
 
 
 #test code
-screen = Screen()
-screen.screensize(600,600)
-screen.bgcolor('black')
-test = Scoreboard()
+# screen = Screen()
+# screen.screensize(600,600)
+# screen.bgcolor('black')
+# test = Scoreboard()
 
-test.write_score()
-screen.exitonclick()
+# test.write_score()
+# screen.exitonclick()
     
 
 

@@ -3,6 +3,7 @@ import random
 import time
 from snake import Snake
 from Food import Food
+from scoreboard import Scoreboard
 
 #Screen Set Up
 screen = Screen()
@@ -17,6 +18,9 @@ snake.create_snake()
 
 #Setting up Food Object from Food Class:
 food = Food()
+
+#Setting up Scoreboard object from scoreboard class:
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(snake.up,'Up')
