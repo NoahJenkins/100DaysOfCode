@@ -18,13 +18,13 @@ class Ball(Turtle):
         new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
     
-    def bounce(self):
+    def bounce_y(self):
         """Inverses the valye of y_move, which reverses the y velicity of the ball"""
         self.y_move *= -1
 
-    def hit(self):
+    def bounce_x(self):
+        """Inverses the valye of y_move, which reverses the y velicity of the ball"""
         self.x_move *=-1
-        self.y_move *=-1
 
 
 # #Test Code
