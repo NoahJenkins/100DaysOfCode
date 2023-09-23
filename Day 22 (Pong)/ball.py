@@ -11,6 +11,7 @@ class Ball(Turtle):
         self.shape('square')
         self.x_move=10
         self.y_move = 10
+        self.current_speed = 0.1
     
     def move(self):
         '''Move logic for the ball to move'''
@@ -25,11 +26,12 @@ class Ball(Turtle):
     def bounce_x(self):
         """Inverses the valye of y_move, which reverses the y velicity of the ball"""
         self.x_move *=-1
+        self.current_speed *= 0.9
 
     def reset_position(self):
         self.goto(0,0)
         self.bounce_x()
-
+        self.current_speed = 0.1
 
 # #Test Code
 # screen=Screen()
