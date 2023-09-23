@@ -38,11 +38,31 @@ while game_is_on:
     
 
 
-    #Colision with food:
+    #Collision with food:
     if snake.head.distance(food) < 15:
         print('yummmmmmmy!')
         food.refresh()
+        snake.extend()
         scoreboard.increase_score()
+
+    #Wall Collision
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_is_on = False
+
+    #Detect desction with tail:
+    #of head collides with any segment in the tail, trigger game over:
+
+    for segment in snake.segments:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            game_is_on = False
+
+
+
+scoreboard.game_over()
+
+screen.exitonclick()
         
         
         
