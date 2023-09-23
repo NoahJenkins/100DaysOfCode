@@ -9,30 +9,38 @@ class Ball(Turtle):
         self.penup()
         self.color('white')
         self.shape('square')
+        self.x_move=10
+        self.y_move = 10
     
     def move(self):
-        new_x = self.xcor() + 10
-        new_y = self.ycor() + 10
+        '''Move logic for the ball to move'''
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
     
     def bounce(self):
-        new_x = self.xcor() + 10
-        new_y = self.ycor() -10
-        self.goto(new_x, new_y)
+        """Inverses the valye of y_move, which reverses the y velicity of the ball"""
+        self.y_move *= -1
+
+    def hit(self):
+        self.x_move *=-1
+        self.y_move *=-1
 
 
-#Test Code
-screen=Screen()
-screen.setup(width=800, height= 600)
+# #Test Code
+# screen=Screen()
+# screen.setup(width=800, height= 600)
+# screen.bgcolor('black')
 
-ball = Ball()
-game_is_on = True
+# ball = Ball()
+# game_is_on = True
 
-while game_is_on:
-    time.sleep(0.1)
-    screen.update()
-    ball.move()
+# while game_is_on:
+#     time.sleep(0.1)
+#     screen.update()
+#     ball.move()
 
-    if ball.ycor > 300 or ball.ycor < -300:
-        ball.bounce()
-screen.exitonclick()
+#     if ball.ycor() > 300 or ball.ycor() < -300:
+#         ball.bounce()
+
+# screen.exitonclick()
