@@ -26,6 +26,10 @@ class Ball(Turtle):
         """Inverses the valye of y_move, which reverses the y velicity of the ball"""
         self.x_move *=-1
 
+    def reset_position(self):
+        self.goto(0,0)
+        self.bounce_x()
+
 
 # #Test Code
 # screen=Screen()

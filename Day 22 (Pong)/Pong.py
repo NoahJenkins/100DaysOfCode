@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
 from ball import Ball
+from scor
 import time
 
 #Crearion of sceeen object from screen class. 
@@ -42,6 +43,14 @@ while game_is_on:
     if  ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
         print('made contact')
         ball.bounce_x()
+
+    #Detect when r paddle missed
+    if ball.xcor() < -380:
+        ball.reset_position()
+
+    #Detect when l paddle missed
+    if ball.xcor() > 380:
+        ball.reset_position()
 
 
 
