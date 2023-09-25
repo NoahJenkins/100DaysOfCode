@@ -9,6 +9,7 @@
           "type": "python",
           "request": "launch",
           "program": "${file}",
+          "cwd": "${workspaceFolder}",
           "console": "integratedTerminal",
           "justMyCode": true
         },
@@ -17,6 +18,7 @@
           "type": "python",
           "request": "launch",
           "program": "${file}",
+          "cwd": "${workspaceFolder}",
           "console": "externalTerminal",
           "justMyCode": true
         }
