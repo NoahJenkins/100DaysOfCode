@@ -26,3 +26,11 @@ print(f'The number of cinnamon squirrels is {cinnamon_count}.')
 black_data = data[data['Primary Fur Color'] == black_color]
 black_count = len(black_data)
 print(f'The number of black squirrels is {black_count}.')
+
+data_dict = {
+"Fur Color": ["Gray", "Cinnamon", "Black"],
+"Count": [gray_count, cinnamon_count, black_count]
+}
+
+df = pandas.DataFrame(data_dict)
+df.to_csv('color_count.csv')
