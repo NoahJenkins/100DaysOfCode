@@ -26,6 +26,7 @@ scribe = show_answer()
 #Setting up Score
 score = 0
 guesses = []
+study_list = []
 
 # Program Running
 game_running = True
@@ -42,11 +43,18 @@ while game_running:
             print(guesses)
             scribe.write_answer(x=int(state_data['x']),y = int(state_data['y']), state = answer_state)
         elif answer_state == 'Exit':
-            game_running
+            game_running = False
         
         if score == 50:
             game_running = False
         
+for state in state_list:
+    if state != guesses:
+        study_list.append(state)
+study_file = pandas.DataFrame(state_list)
+study_file.to_csv('items_to_study.csv')
+
+
 
 
 screen.mainloop()
