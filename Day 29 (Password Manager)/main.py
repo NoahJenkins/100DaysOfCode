@@ -1,8 +1,24 @@
 from tkinter import *
 from tkinter import messagebox
-
+from random import randint, shuffle, choice
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def generate_password():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
+    letters_pass = [choice(letters) for char in range(randint(8, 10))]
+    numbers_pass = [choice(numbers) for char in range(randint(2, 4))]
+    symbol_pass = [choice(symbols) for char in range(randint(2, 4))]
+
+    password_list = letters_pass + numbers_pass + symbol_pass
+
+    shuffle(password_list)
+
+    password = "".join(password_list)
+
+    print(f"Your password is: {password}")
+    password_entry.insert(0, password)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
     #Using get function to get current text in entry boxes
@@ -60,7 +76,7 @@ password_entry = Entry(width=17)
 password_entry.grid(row=3, column=1, sticky=EW)
  
 #Generate Password Button
-generate_password_but = Button(text="Generate Password")
+generate_password_but = Button(text="Generate Password", command=generate_password)
 generate_password_but.grid(row=3, column=2, sticky=EW)
  
 #Add Button
