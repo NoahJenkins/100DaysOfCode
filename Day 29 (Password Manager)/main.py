@@ -34,7 +34,7 @@ def save():
         is_okay = messagebox.askokcancel(title=website, message=f"These are the credentials entered: \nEmail: {email}\nPassword: {password}\nAre you sure you want to save?")
 
         if is_okay:
-            with open("data.txt", "a") as dat_file:
+            with open("password_vault.txt", "a") as dat_file:
                 dat_file.write(f'{website} | {email} | {password}\n')
                 website_entry.delete(0, END)
                 password_entry.delete(0, END)
