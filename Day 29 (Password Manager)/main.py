@@ -10,13 +10,16 @@ def save():
     email = email_entry.get()
     password = password_entry.get()
 
-    is_okay = messagebox.askokcancel(title=website, message=f"These are the credentials entered: \nEmail: {email}\nPassword: {password}\nAre you sure you want to save?")
+    if len(website) == 0 or len(password) ==0:
+        messagebox.showinfo(title="Warning", message="Please fill out any empty fields.")
+    else:
+        is_okay = messagebox.askokcancel(title=website, message=f"These are the credentials entered: \nEmail: {email}\nPassword: {password}\nAre you sure you want to save?")
 
-    if is_okay:
-        with open("data.txt", "a") as dat_file:
-            dat_file.write(f'{website} | {email} | {password}\n')
-            website_entry.delete(0, END)
-            password_entry.delete(0, END)
+        if is_okay:
+            with open("data.txt", "a") as dat_file:
+                dat_file.write(f'{website} | {email} | {password}\n')
+                website_entry.delete(0, END)
+                password_entry.delete(0, END)
 
 # ---------------------------- UI SETUP ------------------------------- #
 #Windows Set up
