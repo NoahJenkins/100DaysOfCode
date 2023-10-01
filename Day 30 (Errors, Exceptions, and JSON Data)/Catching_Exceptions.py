@@ -27,16 +27,31 @@
 # print(bmi)
 
 #Challenge 1:
-fruits = eval(input())
+# fruits = eval(input())
 # 🚨 Do not change the code above
 
 # TODO: Catch the exception and make sure the code runs without crashing.
-def make_pie(index):
-    try:
-        fruit = fruits[index]
-        print(fruit + " pie")
-    except IndexError:
-        print("Index out of range. Please provide a valid index.")
+# def make_pie(index):
+#     try:
+#         fruit = fruits[index]
+#         print(fruit + " pie")
+#     except IndexError:
+#         print("Index out of range. Please provide a valid index.")
 
-# Example usage:
-make_pie(2)  # Replace 2 with the desired index
+# # Example usage:
+# make_pie(2)  # Replace 2 with the desired index
+
+#Challenge 2:
+# eval() function will create a list of dictionaries using the input
+# facebook_posts = eval(input())
+
+# total_likes = 0
+# # TODO: Catch the KeyError exception
+# for post in facebook_posts:
+#     try:
+#         total_likes = total_likes + post['Likes']
+#     except KeyError:
+#         pass
+
+# print(total_likes)
+
