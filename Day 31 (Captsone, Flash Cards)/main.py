@@ -5,11 +5,17 @@ import random
 
 BACKGROUND_COLOR = "#B1DDC6"
 current_card = {}
+to_learn = {}
 
 ######################  Create Flash Card #####################
 
-data = pandas.read_csv("data/french_words.csv")
-to_learn = data.to_dict(orient="records")
+try:
+    data = pandas.read_csv("data/words_to_learn.csv")
+except FileNotFoundError:
+    orignal_data = pandas.read_csv("data/french_words.csv")
+    to_learn = orignal_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
 
 
 
@@ -34,6 +40,18 @@ def flip_card():
     canvas.itemconfig(card_text,text=current_card["English"], fill = "white")
     canvas.itemconfig(card_background, image = card_back_image)
 
+######################  Is Known Function #####################
+
+def is_known():
+    to_learn.remove(current_card)
+    print(len(to_learn))
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("data/words_to_learn.csv")
+
+
+    next_card()
+
+    
 
 
 ###################### UI Set Up ##############################
@@ -59,7 +77,7 @@ wrong_but = Button(image=wrong_logo, highlightthickness=0)
 wrong_but.grid(row = 1, column=0)
 
 right_logo = PhotoImage(file = 'images/right.png')
-right_but = Button(image=right_logo, highlightthickness=0, command=next_card)
+right_but = Button(image=right_logo, highlightthickness=0, command=is_known)
 right_but.grid(row = 1, column=1)
 
 
