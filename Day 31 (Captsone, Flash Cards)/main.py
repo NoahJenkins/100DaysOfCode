@@ -7,7 +7,7 @@ BACKGROUND_COLOR = "#B1DDC6"
 current_card = {}
 to_learn = {}
 
-######################  Create Flash Card #####################
+###################  Catching FileNotFound Error ##################
 
 try:
     data = pandas.read_csv("data/words_to_learn.csv")
@@ -17,8 +17,7 @@ except FileNotFoundError:
 else:
     to_learn = data.to_dict(orient="records")
 
-
-
+######################  Create Flash Card #####################
 
 
 def next_card():
@@ -46,13 +45,8 @@ def is_known():
     to_learn.remove(current_card)
     print(len(to_learn))
     data = pandas.DataFrame(to_learn)
-    data.to_csv("data/words_to_learn.csv")
-
-
+    data.to_csv("data/words_to_learn.csv", index=False)
     next_card()
-
-    
-
 
 ###################### UI Set Up ##############################
 #Window Set Up
