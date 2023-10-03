@@ -1,10 +1,3 @@
-##################### Normal Starting Project ######################
-
-# 1. Update the birthdays.csv with your friends & family's details. 
-# HINT: Make sure one of the entries matches today's date for testing purposes. e.g.
-#name,email,year,month,day
-#YourName,your_own@email.com,today_year,today_month,today_day
-
 # 2. Check if today matches a birthday in the birthdays.csv
 # HINT 1: Create a tuple from today's month and day using datetime. e.g.
 # today = (today_month, today_day)
@@ -39,5 +32,24 @@
 # HINT 3: Remember to login to your email service with email/password. Make sure your security setting is set to allow less secure apps.
 # HINT 4: The message should have the Subject: Happy Birthday then after \n\n The Message Body.
 
+import smtplib
+import random
+import random
+import datetime as dt
+import pandas
+
+now = dt.datetime.now()
+today = (now.month, now.day)
+print(today)
+
+data = pandas.read_csv('birthdays.csv')
+
+birthdays_dict = {
+    (birthday_month, birthday_day): data_row
+}
+birthdays_dict = {(data_row["month"], data_row["day"]): data_row for (index, data_row) in data.iterrows()}
+
+if today in birthdays_dict:
+    file_path = f"letter_templates/letter_{random.randint(1-3)}.txt"
 
 
