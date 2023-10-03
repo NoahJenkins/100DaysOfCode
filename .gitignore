@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 password_vault.txt
 password.py
+email_creds.py
