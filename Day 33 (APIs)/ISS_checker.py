@@ -62,7 +62,7 @@ def send_email():
 
 while True:
     if present_hour >= sunrise or present_hour <= sunset:
-        if iss_latitude <= 37 and iss_latitude >= 28 and iss_longitude <= 102 and iss_latitude >= 92:
+        if iss_latitude <= (MY_LAT +5 ) and iss_latitude >= (MY_LAT -5) and iss_longitude <= (MY_LONG + 5) and iss_longitude >= (MY_LONG - 5):
             send_email()
         else:
             print("I will check again in one minute")
