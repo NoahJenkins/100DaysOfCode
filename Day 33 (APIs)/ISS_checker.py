@@ -1,7 +1,8 @@
 import requests
 import datetime as dt
-import smtpd
-from email import password, my_email, rec_email
+import smtplib
+from email_creds import password, my_email, rec_email
+import time
 
 
 response = requests.get(url="http://api.open-notify.org/iss-now.json")
@@ -10,7 +11,7 @@ response = requests.get(url="http://api.open-notify.org/iss-now.json")
 
 #Reading data 
 data = response.json()
-print(data)
+# print(data)
 
 specific_data = response.json()['iss_position']
 print(specific_data)
@@ -32,37 +33,42 @@ response = requests.get('https://api.sunrise-sunset.org/json', params=parameters
 
 response.raise_for_status()
 data = response.json()
-print(data)
+# print(data)
 sunrise = int(data["results"]["sunrise"].split('T')[1].split(":")[0])
 sunset = int(data["results"]["sunset"].split('T')[1].split(":")[0])
 
-print(sunrise, sunset)
+# print(sunrise, sunset)
 
 #Get Current time:
 time_now = str(dt.datetime.now())
 present_hour = int(time_now.split(" ")[1].split(":")[0])
-print(present_hour)
+# print(present_hour)
 
 #Email Logic
+def send_email():
+    global iss_latitude, iss_longitude
+    with smtplib.SMTP('smtp.gmail.com',587) as connection:
 
-
-
-# with smtplib.SMTP('smtp.gmail.com',587) as connection:
-
-#     #This encrypts our email
-#     connection.starttls()
-#     connection.login(user = my_email, password= password)
-#     connection.sendmail(from_addr=my_email,
-#                         to_addrs=rec_email, 
-#                         msg = "Subject:Hello!\n\nHello World")
+        #This encrypts our email
+        connection.starttls()
+        connection.login(user = my_email, password= password)
+        connection.sendmail(from_addr=my_email,
+                            to_addrs=rec_email, 
+                            msg = f"Subject:ISS Report!\n\nHello, the ISS is right above at longitude: {iss_longitude} and latidude: {iss_latitude}")
 
 
 
 #ISS Checker
 
-if present_hour >= sunrise or present_hour <= sunset:
-    if iss_latitude <= 37 and iss_latitude >= 28 and iss_longitude <= 102 and iss_latitude >= 92:
-        pass
+while True:
+    if present_hour >= sunrise or present_hour <= sunset:
+        if iss_latitude <= 37 and iss_latitude >= 28 and iss_longitude <= 102 and iss_latitude >= 92:
+            send_email()
+        else:
+            print("I will check again in one minute")
+    else:
+        print("I will check again in one minute")
+    time.sleep(60)
 
 
 
