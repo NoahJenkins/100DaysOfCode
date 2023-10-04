@@ -1,5 +1,5 @@
 from tkinter import *
-import requests
+import requests as dt
 
 def get_quote():
     response = requests.get('https://api.kanye.rest/')
