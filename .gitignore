@@ -3,6 +3,6 @@
 __pycache__/
 *.pyc
 password_vault.txt
-password_vault.csv
+password_vault.json
 password.py
 email_creds.py
