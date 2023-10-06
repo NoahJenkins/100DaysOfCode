@@ -6,3 +6,4 @@ password_vault.txt
 password_vault.json
 password.py
 email_creds.py
+api_key.py
