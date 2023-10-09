@@ -2,7 +2,8 @@
 import requests
 from api_key import alpha_api, news_api, TW_SID, TW_AUTH
 from twilio.rest import Client
-from em
+from email_creds import rec_email, password, my_email
+import smtplib
 
 ##################### Global Variables #####################
 STOCK_NAME = "LMT"
@@ -75,9 +76,9 @@ for i, article in enumerate(articles, start=1):
 # print(result_string)
 
 ######################### SMS Logic ##########################
-account_sid = TW_SID
-auth_token = TW_AUTH
-client = Client(account_sid, auth_token)
+# account_sid = TW_SID
+# auth_token = TW_AUTH
+# client = Client(account_sid, auth_token)
 
 # message = client.messages.create(
 #   from_='+18333241411',
@@ -99,5 +100,17 @@ client = Client(account_sid, auth_token)
 # print(message.sid)
 
 # #Test code:
+# body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
+# print(body)
+
+######################### Email Logixc ##########################
 body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
+
+with smtplib.SMTP('smtp.gmail.com',587) as connection:
+    connection.starttls()
+    connection.login(user = my_email, password= password)
+    connection.sendmail(from_addr=my_email,
+                        to_addrs=rec_email, 
+                        msg = body)
+    
 print(body)
