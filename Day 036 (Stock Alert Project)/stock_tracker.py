@@ -7,7 +7,7 @@ from email_creds import rec_email, password, my_email, phone
 import smtplib
 
 ##################### Global Variables #####################
-STOCK_NAME = "LMT"
+STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
@@ -62,7 +62,7 @@ news_response = requests.get(NEWS_ENDPOINT,news_params)
 news_response.raise_for_status()
 news_data = news_response.json()
 # print(news_data)
-articles = news_data["articles"][:1]
+articles = news_data["articles"][:3]
 # print (articles)
 
 
@@ -91,33 +91,33 @@ client = Client(account_sid, auth_token)
 
 ######################### Conditional SMS ##########################
 
-if change_pecent >= 5.0:
-    message = client.messages.create(
-    from_='+18333241411',
-    body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}",
-    to=phone
-)
-    print(f"SMS sent successfully. SID: {message.sid}")
-else:
-     print("Change percent is below the threshold. No SMS sent.")
+# if change_pecent >= 5.0:
+#     message = client.messages.create(
+#     from_='+18333241411',
+#     body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}",
+#     to=phone
+# )
+#     print(f"SMS sent successfully. SID: {message.sid}")
+# else:
+#      print("Change percent is below the threshold. No SMS sent.")
 
 
-print(message.sid)
+# print(message.sid)
 
 #Test code:
 # body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
 # print(body)
 
 ######################### Email Logic ##########################
-# body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
-# subject = f'{COMPANY_NAME} ALERT!'
-
-# with smtplib.SMTP('smtp.gmail.com',587) as connection:
-#     connection.starttls()
-#     connection.login(user = my_email, password= password)
-#     connection.sendmail(from_addr=my_email,
-#                         to_addrs=rec_email, 
-#                         msg = f"Subject:{subject.decode('utf-8')}!\n\n{body.decode('utf-8')}")
+body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
+subject = f'{COMPANY_NAME} ALERT!'
+if change_pecent >= 5.0:
+    with smtplib.SMTP('smtp.gmail.com',587) as connection:
+        connection.starttls()
+        connection.login(user = my_email, password= password)
+        connection.sendmail(from_addr=my_email,
+                            to_addrs=rec_email, 
+                            msg = f"Subject:{subject.encode('UTF-8')}!\n\n{body.encode('UTF-8')}")
     
-# print (body)
+print (body)
     
