@@ -12,41 +12,60 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
 ######################### Stock Data ##########################
 
-# stock_params = {
-#     "apikey": alpha_api,
-#     "function": "TIME_SERIES_DAILY",
-#     "symbol": STOCK_NAME
-# }
+stock_params = {
+    "apikey": alpha_api,
+    "function": "TIME_SERIES_DAILY",
+    "symbol": STOCK_NAME
+}
 
-# stock_response = requests.get(STOCK_ENDPOINT, params=stock_params)
-# stock_response.raise_for_status()
-# stock_data = stock_response.json()
-# # print(stock_data)
+stock_response = requests.get(STOCK_ENDPOINT, params=stock_params)
+stock_response.raise_for_status()
+stock_data = stock_response.json()
+# print(stock_data)
+
+#Todat Close
+time_series = stock_data["Time Series (Daily)"]
+latest_date = max(time_series.keys())
+close_price = float(time_series[latest_date]['4. close'])
+print(close_price)
+
+#Yesterday Close
+dates = list(time_series.keys())
+dates.sort(reverse=True)
+yesterday = dates[1]
+yesterday_close = float(time_series[yesterday]['4. close'])
+print(yesterday_close)
+
+#Compare Values
+change_value = round(abs((close_price)-(yesterday_close)),2)
+print(change_value)
+change_pecent = round((change_value / yesterday_close),4) * 100
+print(change_pecent)
 
 ######################### News Data ##########################
 
-news_params = {
-    "apiKey": news_api,
-    "q": STOCK_NAME
-}
+# news_params = {
+#     "apiKey": news_api,
+#     "q": STOCK_NAME
+# }
 
-news_response = requests.get(NEWS_ENDPOINT,news_params)
-news_response.raise_for_status()
-news_data = news_response.json()
-print(news_data)
+# news_response = requests.get(NEWS_ENDPOINT,news_params)
+# news_response.raise_for_status()
+# news_data = news_response.json()
+# print(news_data)
 
 
 
 ######################### SMS Logic ##########################
-account_sid = TW_SID
-auth_token = TW_AUTH
-client = Client(account_sid, auth_token)
+# account_sid = TW_SID
+# auth_token = TW_AUTH
+# client = Client(account_sid, auth_token)
 
-message = client.messages.create(
-  from_='+18333241411',
-  body= f"Hello World",
-  to='+18178980345'
-)
+# message = client.messages.create(
+#   from_='+18333241411',
+#   body= f"Hello World",
+#   to='+18178980345'
+# )
 
-print(message.sid)
+# print(message.sid)
 
