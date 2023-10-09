@@ -2,7 +2,8 @@
 import requests
 from api_key import alpha_api, news_api, TW_SID, TW_AUTH
 from twilio.rest import Client
-from email_creds import rec_email, password, my_email
+
+from email_creds import rec_email, password, my_email, phone
 import smtplib
 
 ##################### Global Variables #####################
@@ -61,7 +62,7 @@ news_response = requests.get(NEWS_ENDPOINT,news_params)
 news_response.raise_for_status()
 news_data = news_response.json()
 # print(news_data)
-articles = news_data["articles"][:2]
+articles = news_data["articles"][:1]
 # print (articles)
 
 
@@ -76,9 +77,9 @@ for i, article in enumerate(articles, start=1):
 # print(result_string)
 
 ######################### SMS Logic ##########################
-# account_sid = TW_SID
-# auth_token = TW_AUTH
-# client = Client(account_sid, auth_token)
+account_sid = TW_SID
+auth_token = TW_AUTH
+client = Client(account_sid, auth_token)
 
 # message = client.messages.create(
 #   from_='+18333241411',
@@ -90,27 +91,33 @@ for i, article in enumerate(articles, start=1):
 
 ######################### Conditional SMS ##########################
 
-# if change_pecent >= 5.0:
-#     message = client.messages.create(
-#     from_='+18333241411',
-#     body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}",
-#     to='+18178980345'
-# )
+if change_pecent >= 5.0:
+    message = client.messages.create(
+    from_='+18333241411',
+    body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}",
+    to=phone
+)
+    print(f"SMS sent successfully. SID: {message.sid}")
+else:
+     print("Change percent is below the threshold. No SMS sent.")
 
-# print(message.sid)
 
-# #Test code:
+print(message.sid)
+
+#Test code:
 # body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
 # print(body)
 
-######################### Email Logixc ##########################
-body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
+######################### Email Logic ##########################
+# body= f"{STOCK_NAME}:{change_direction}{change_pecent}\n\n{result_string}"
+# subject = f'{COMPANY_NAME} ALERT!'
 
-with smtplib.SMTP('smtp.gmail.com',587) as connection:
-    connection.starttls()
-    connection.login(user = my_email, password= password)
-    connection.sendmail(from_addr=my_email,
-                        to_addrs=rec_email, 
-                        msg = body)
+# with smtplib.SMTP('smtp.gmail.com',587) as connection:
+#     connection.starttls()
+#     connection.login(user = my_email, password= password)
+#     connection.sendmail(from_addr=my_email,
+#                         to_addrs=rec_email, 
+#                         msg = f"Subject:{subject.decode('utf-8')}!\n\n{body.decode('utf-8')}")
     
-print(body)
+# print (body)
+    
