@@ -1,5 +1,6 @@
 from api_key import nutrition_ID, nutrition_key
 import requests
+from datetime import datetime as dt
 
 api_headers = {
     "x-app-id": nutrition_ID,
@@ -25,11 +26,50 @@ response.raise_for_status()
 result = response.json()
 print(result)
 
+
+if 'exercises' in result and result['exercises']:
+    exercise_data = result['exercises'][0]
+    calories = str(exercise_data.get("nf_calories", "N/A"))
+    duration = str(exercise_data.get("duration_min", "N/A"))
+    exercise_name = exercise_data.get("name", "N/A")
+
+   # Printing the extracted information
+    print(f'Exercise Name: {exercise_name}')
+    print(f'Duration (min): {duration}')
+    print(f'Calories: {calories}')
+else:
+    print("No exercise data found in the response.")
+
+##########################################
+
+today = dt.now()
+today.now
+# print(today)
+
+date = today.strftime('%d/%m/%Y')
+print(date)
+
+military_time = today.strftime('%H:%M:%S')
+print(military_time)
+
 ############################################
 
 sheet_endpoint = "https://api.sheety.co/ac6b17b343d7dd5b605bfbbfdc1535b5/workoutTracking/workouts"
 
 sheet_response = requests.get(url=sheet_endpoint)
+sheet_response.raise_for_status()
+sheet_data = sheet_response.json()
+print(sheet_data)
+
+sheet_params = {
+    'workout': {
+        'date': date, 
+        'time': military_time, 
+        'exercise': exercise_name, 
+        'duration': duration, 
+        'calories': calories}}
+
+sheet_response = requests.post(url=sheet_endpoint, json=sheet_params)
 sheet_response.raise_for_status()
 sheet_data = sheet_response.json()
 print(sheet_data)
