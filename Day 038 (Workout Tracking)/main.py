@@ -24,3 +24,12 @@ response = requests.post(url=exercise_endpoint, headers=api_headers, json=parame
 response.raise_for_status()
 result = response.json()
 print(result)
+
+############################################
+
+sheet_endpoint = "https://api.sheety.co/ac6b17b343d7dd5b605bfbbfdc1535b5/workoutTracking/workouts"
+
+sheet_response = requests.get(url=sheet_endpoint)
+sheet_response.raise_for_status()
+sheet_data = sheet_response.json()
+print(sheet_data)
