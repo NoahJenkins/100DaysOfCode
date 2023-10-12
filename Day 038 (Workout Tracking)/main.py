@@ -55,9 +55,11 @@ print(military_time)
 ############################################
 
 sheet_endpoint = "https://api.sheety.co/ac6b17b343d7dd5b605bfbbfdc1535b5/workoutTracking/workouts"
-sheet_key = sheet_token
+sheet_key = {
+"Authorization": f"Bearer {sheet_token}"
+}
 
-sheet_response = requests.get(url=sheet_endpoint, headers=sheet_token)
+sheet_response = requests.get(url=sheet_endpoint, headers=sheet_key)
 sheet_response.raise_for_status()
 sheet_data = sheet_response.json()
 print(sheet_data)
@@ -70,7 +72,7 @@ sheet_params = {
         'duration': duration, 
         'calories': calories}}
 
-sheet_response = requests.post(url=sheet_endpoint, json=sheet_params, headers=sheet_token)
+sheet_response = requests.post(url=sheet_endpoint, json=sheet_params, headers=sheet_key)
 sheet_response.raise_for_status()
 sheet_data = sheet_response.json()
 print(sheet_data)
