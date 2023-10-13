@@ -49,5 +49,5 @@ class DataManager:
 #Test Code
 test = DataManager()
 test.get_data()
-test.post_data("Dummy", "Par", "54")
-test.put_data(city= "Paris", iataCode= "DFW", price="54")
+# test.post_data("Dummy", "Par", "54")
+# test.put_data(city= "Paris", iataCode= "DFW", price="54")
