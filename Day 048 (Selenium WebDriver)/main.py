@@ -2,9 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-# Deprecated - no longer needed
-chrome_driver_path = "/Users/philippmuellauer/Development/chromedriver"
-
 # keeps chrome open
 chrome_options = webdriver.ChromeOptions()
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
