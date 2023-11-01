@@ -5,26 +5,6 @@ import requests
 
 app = Flask(__name__)
 
-# name = "Noah"
-
-# genderize_url = "https://api.genderize.io"
-# gender_params = {"name": name}
-
-# gender_response = requests.get(url=genderize_url, json=gender_params)
-# gender_response.raise_for_status()
-# gender_data = gender_response.json()
-# print(gender_data)
-
-
-# agify_url = "https://api.agify.io"
-# age_params = {"name": name}
-
-# age_reponse = requests.get(url=agify_url, json=age_params)
-# age_reponse.raise_for_status()
-# age_data = age_reponse.json()
-# print(age_data)
-
-
 
 @app.route('/')
 def home():
@@ -34,7 +14,20 @@ def home():
 
 @app.route('/guess/<name>')
 def guess(name):
-    return render_template("guess.html", person_name=name)
+    gender_url = f"https://api.genderize.io?name={name}"
+    gender_response = requests.get(gender_url)
+    gender_response.raise_for_status()
+    gender_data = gender_response.json()
+    gender = gender_data["gender"]
+    print(gender)
+
+    age_url = f"https://api.agify.io?name={name}"
+    age_response = requests.get(age_url)
+    age_response.raise_for_status()
+    age_data = age_response.json()
+    age = age_data["age"]
+
+    return render_template("guess.html", person_name=name, person_gender=gender, person_age=age)
 
 
 if __name__ == "__main__":
