@@ -36,7 +36,7 @@ def blog():
     response.raise_for_status()
     data = response.json()
     
-    return render_template("blog.html", post=data)
+    return render_template("blog.html", posts=data)
 
 
 if __name__ == "__main__":
