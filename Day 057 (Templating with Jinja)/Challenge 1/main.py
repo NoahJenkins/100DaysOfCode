@@ -35,6 +35,7 @@ def blog():
     response = requests.get(blog_url)
     response.raise_for_status()
     data = response.json()
+    
     return render_template("blog.html", post=data)
 
 
