@@ -1,15 +1,15 @@
-# import smtplib
+import smtplib
 
-# from email import password, my_email, rec_email
+from email import password, my_email, rec_email
 
-# with smtplib.SMTP('smtp.gmail.com',587) as connection:
+with smtplib.SMTP('smtp.gmail.com',587) as connection:
 
-#     #This encrypts our email
-#     connection.starttls()
-#     connection.login(user = my_email, password= password)
-#     connection.sendmail(from_addr=my_email,
-#                         to_addrs=rec_email, 
-#                         msg = "Subject:Hello!\n\nHello World")
+    #This encrypts our email
+    connection.starttls()
+    connection.login(user = my_email, password= password)
+    connection.sendmail(from_addr=my_email,
+                        to_addrs=rec_email, 
+                        msg = "Subject:Hello!\n\nHello World")
 
 
 
