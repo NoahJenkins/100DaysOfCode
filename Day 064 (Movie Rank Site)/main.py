@@ -6,21 +6,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 
-'''
-Red underlines? Install the required packages first: 
-Open the Terminal in PyCharm (bottom left). 
-
-On Windows type:
-python -m pip install -r requirements.txt
-
-On MacOS type:
-pip3 install -r requirements.txt
-
-This will install the packages from requirements.txt for this project.
-'''
-
-
-MOVIE_DB_API_KEY = "USE_YOUR_OWN_CODE"
+MOVIE_DB_API_KEY = "APi Key"
 MOVIE_DB_SEARCH_URL = "https://api.themoviedb.org/3/search/movie"
 MOVIE_DB_INFO_URL = "https://api.themoviedb.org/3/movie"
 MOVIE_DB_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
