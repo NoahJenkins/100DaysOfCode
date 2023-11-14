@@ -3,6 +3,7 @@
 
 GET {{baseURL}}/get-user/123
 
+response ?? 200
 
 ###
 
@@ -12,3 +13,4 @@ Content-Type:application/json
 {
     "username": "Joe"
 }
+
