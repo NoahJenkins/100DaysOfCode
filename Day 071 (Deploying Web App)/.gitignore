@@ -1,13 +1,3 @@
-.DS_Store
-**/*.DS_Store
-__pycache__/
-*.pyc
-password_vault.txt
-password_vault.json
-password.py
-email_creds.py
-api_key.py
-
 # This is a gitignore file. Folders and file types in here will not
 # be added to version control and will not be uploaded to Github.
 # For example we ignore the hidden files from Pycharm and VS Code.
