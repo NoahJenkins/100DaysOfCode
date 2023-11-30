@@ -23,5 +23,5 @@ user_input = input("Enter the text to convert to Morse code: ")
 # Convert user input to Morse code
 morse_result = text_to_morse(user_input)
 
-print(f"Morse code: {morse_result}")
+print(f"Your text in morse code is: {morse_result}")
 
