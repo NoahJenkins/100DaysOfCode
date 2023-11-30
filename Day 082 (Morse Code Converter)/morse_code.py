@@ -14,7 +14,8 @@ def text_to_morse(text):
             morse += morse_code[char] + ' '
         else:
             morse += char + ' '
-    return morse.strip()
+    return morse
+
 
 # Getting user input
 user_input = input("Enter the text to convert to Morse code: ")
