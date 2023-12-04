@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+    <title>Watermark Result</title>
+</head>
+<body>
+    <h1>Original Image</h1>
+    <img src="{{ url_for('static', filename=original_image) }}" alt="Original Image">
+
+    <h1>Watermarked Image</h1>
+    <img src="{{ url_for('static', filename=watermarked_image) }}" alt="Watermarked Image">
+</body>
+</html>
