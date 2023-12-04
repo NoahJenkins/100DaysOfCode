@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo App</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <ul>
+        {% for todo in todos %}
+            <li>
+                {{ todo }}
+                <a href="/delete/{{ loop.index0 }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form action="/add" method="post">
+        <input type="text" name="todo" placeholder="Enter new todo">
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
