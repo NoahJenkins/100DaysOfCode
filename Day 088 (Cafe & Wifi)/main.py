@@ -45,12 +45,16 @@ def add_cafe():
 
 @app.route('/cafes')
 def cafes():
-    with open('cafe-data.csv', newline='', encoding='utf-8') as csv_file:
-        csv_data = csv.reader(csv_file, delimiter=',')
-        list_of_rows = []
-        for row in csv_data:
-            list_of_rows.append(row)
-    return render_template('cafes.html', cafes=list_of_rows)
+    filename = 'cafe-data.csv'
+    if os.path.exists(filename):
+        with open(filename, newline='', encoding='utf-8') as csv_file:
+            csv_data = csv.reader(csv_file, delimiter=',')
+            list_of_rows = []
+            for row in csv_data:
+                list_of_rows.append(row)
+        return render_template('cafes.html', cafes=list_of_rows)
+    else:
+        return "Error: File 'cafe-data.csv' not found."
 
 
 if __name__ == '__main__':
