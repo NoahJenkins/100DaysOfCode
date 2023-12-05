@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Palette Generator - Result</title>
+    <style>
+        /* Add your custom CSS styles here */
+        .color-box {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Palette Generator - Result</h1>
+    
+    <div id="color-palette">
+        {% for color in colors %}
+        <div class="color-box" style="background-color: {{ color }}"></div>
+        {% endfor %}
+    </div>
+    
+    <script>
+        // Use JavaScript to extract colors from color_extractor.py and generate color boxes dynamically
+        // Fetch the colors from color_extractor.py using an API call or any other method
+        const colors = ['red', 'green', 'blue'];
+
+        // Generate color boxes dynamically
+        const colorPalette = document.getElementById('color-palette');
+        colors.forEach(color => {
+            const colorBox = document.createElement('div');
+            colorBox.classList.add('color-box');
+            colorBox.style.backgroundColor = color;
+            colorPalette.appendChild(colorBox);
+        });
+    </script>
+</body>
+</html>
